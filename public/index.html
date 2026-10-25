@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CrunchyBite | Order food online</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="nav">
+        <a class="logo" href="/">CrunchyBite</a>
+        <div class="search">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          <input
+            id="q"
+            type="search"
+            placeholder="Search for a dish, e.g. paneer, lassi, naan"
+            aria-label="Search dishes"
+          />
+        </div>
+        <span class="sp"></span>
+        <button class="btn plain sm" id="ordersBtn" hidden>My orders</button>
+        <button class="btn plain sm" id="authBtn">Log in</button>
+        <button class="btn sm" id="cartBtn">
+          Cart<span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="offers" id="offers"></div>
+      <h2 class="sec">What's on your mind?</h2>
+      <div class="cats" id="cats"></div>
+      <hr />
+      <h2 class="sec" id="menuTop" style="margin-top: 6px">Order online</h2>
+      <div class="filters" id="filters">
+        <button class="chip" data-f="veg" aria-pressed="false">
+          <span class="vg"></span>Pure veg
+        </button>
+        <button class="chip" data-f="nonveg" aria-pressed="false">
+          <span class="vg nv"></span>Non-veg
+        </button>
+        <button class="chip" data-f="rating" aria-pressed="false">
+          Rating 4.0+
+        </button>
+        <button class="chip" data-f="cheap" aria-pressed="false">
+          Under ₹200
+        </button>
+        <button class="chip" data-f="fav" aria-pressed="false">
+          ♥ Favourites
+        </button>
+        <select id="sort" aria-label="Sort">
+          <option value="">Relevance</option>
+          <option value="rating">Rating: high to low</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+          <option value="fast">Delivery time</option>
+        </select>
+      </div>
+      <div class="grid" id="menu"></div>
+      <section id="orders" hidden>
+        <h2 class="sec" style="margin-top: 50px">Your orders</h2>
+        <div id="orderList"></div>
+      </section>
+    </div>
+    <footer class="site">
+      <b>CrunchyBit</b>
+      <p>
+        Open daily, 11 AM to 11 PM · Pay by UPI, card or cash on delivery · Free
+        delivery above ₹500
+      </p>
+    </footer>
+
+    <button class="cartbar" id="cartbar" aria-label="View cart">
+      <span id="cbText"></span><span>View cart →</span>
+    </button>
+    <div id="shade"></div>
+    <aside id="cart" aria-label="Cart">
+      <header class="row">
+        <h2>Your cart</h2>
+        <button class="btn plain sm" id="closeCart">✕ Close</button>
+      </header>
+      <div id="cartBody"></div>
+      <div id="cartFoot">
+        <p class="err" id="cartErr" style="margin: 0 0 6px"></p>
+        <button class="btn wide" id="placeBtn">Place order</button>
+      </div>
+    </aside>
+
+    <dialog id="itemDlg">
+      <button class="x" id="closeItem" aria-label="Close">✕</button>
+      <div class="detail" id="itemBody"></div>
+    </dialog>
+    <dialog id="authDlg" class="narrow">
+      <form method="dialog" id="authForm" class="pad">
+        <h2 id="authTitle">Log in</h2>
+        <div id="nameWrap" hidden>
+          <label for="aname">Name</label
+          ><input id="aname" autocomplete="name" />
+        </div>
+        <label for="aemail">Email</label
+        ><input id="aemail" type="email" autocomplete="email" required />
+        <label for="apass">Password</label
+        ><input
+          id="apass"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
+        <p class="err" id="authErr"></p>
+        <div class="row">
+          <button class="btn" type="submit">Continue</button
+          ><button class="btn ghost" type="button" id="switchAuth">
+            Create account
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <script src="/js/api.js"></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
