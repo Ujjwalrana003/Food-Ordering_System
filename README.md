@@ -17,5 +17,9 @@ the order date in the Orders tab. At startup, the app adds missing order columns
 including the phone number and nullable delivery coordinates, to an existing database.
 Admins can open the saved pin from the Orders tab.
 
+Admins can also open the Analytics tab to review revenue, order volume, average order
+value, cancellation rate, daily revenue, order statuses, and popular items for the last
+7, 30, or 90 days.
+
 Images: dish pictures live in `public/images/menu/`. Replace any file with your own photo
 or upload one from Admin > Menu > Edit. Uploads are saved in `public/images/uploads/`.

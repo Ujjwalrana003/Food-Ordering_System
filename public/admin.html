@@ -31,6 +31,8 @@
           <button class="tab" data-p="menuP" aria-pressed="true">Menu</button
           ><button class="tab" data-p="ordersP" aria-pressed="false">
             Orders
+          </button><button class="tab" data-p="analyticsP" aria-pressed="false">
+            Analytics
           </button>
         </div>
         <div id="menuP">
@@ -72,6 +74,42 @@
               </thead>
               <tbody id="orows"></tbody>
             </table>
+          </div>
+        </div>
+        <div id="analyticsP" hidden>
+          <div class="row analytics-heading">
+            <div>
+              <h2>Data analytics</h2>
+              <p class="analytics-subtitle">Track sales and order activity over time.</p>
+            </div>
+            <label class="period-control" for="analyticsPeriod">
+              Date range
+              <select id="analyticsPeriod">
+                <option value="7">Last 7 days</option>
+                <option value="30" selected>Last 30 days</option>
+                <option value="90">Last 90 days</option>
+              </select>
+            </label>
+          </div>
+          <p class="analytics-notice" id="analyticsNotice" role="status" hidden></p>
+          <p class="err" id="analyticsError" role="alert"></p>
+          <div class="stats analytics-stats" id="analyticsStats" aria-live="polite"></div>
+          <div class="analytics-grid">
+            <section class="analytics-card">
+              <h3>Revenue over time</h3>
+              <p class="analytics-subtitle">Daily revenue from non-cancelled orders</p>
+              <div id="revenueChart" class="chart" role="img"></div>
+            </section>
+            <section class="analytics-card">
+              <h3>Orders by status</h3>
+              <p class="analytics-subtitle">Order count for the selected period</p>
+              <div id="statusChart" class="status-chart"></div>
+            </section>
+            <section class="analytics-card top-items-card">
+              <h3>Popular items</h3>
+              <p class="analytics-subtitle">Most ordered dishes, excluding cancelled orders</p>
+              <ol id="popularItems" class="popular-items"></ol>
+            </section>
           </div>
         </div>
       </section>
